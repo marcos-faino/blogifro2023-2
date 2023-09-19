@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %} - Listando Postagens {% endblock %}
+
+{% block conteudo%}
+{% include 'includes/top.html' %}
+<section data-bs-version="5.1" class="content10 cid-tzVgp39K95" id="content10-1">
+
+    <div class="container">
+        {% for p in posts %}
+        <div class="row justify-content-center border border-ligth">
+            <div class="col-8 col-md offset-1">
+
+                <h6 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
+                    {{ p.titulo }}
+                </h6>
+            </div>
+            <div class="col-md-8 col-lg-4">
+                <p class="mbr-text mbr-fonts-style display-9">
+                    Publicado em: {{ p.publicado }} por {{ p.autor }}
+                </p>
+                <p class="mbr-text mbr-fonts-style display-7">
+                    {{ p.corpo|truncatewords:10|linebreaks }}
+                </p>
+            </div>
+            <div class="mbr-section-btn align-center">
+                    <a class="btn btn-primary display-4" href="{% url 'detalhepost' p.id p.slug %}">Ver mais...</a>
+            </div>
+        </div>
+        {% empty %}
+            <h2>Não existe nenhum post para listar!</h2>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}
