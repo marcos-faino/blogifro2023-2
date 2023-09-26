@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block titulo %} Enviando Post: {{ post.slug }}  {% endblock %}
+
+{% block conteudo%}
+{% include 'includes/top.html' %}
+<section data-bs-version="5.1" class="content10 cid-tzVgp39K95" id="content10-1">
+
+    <div class="container">
+        <div class="row justify-content-center border border-ligth">
+            <div class="col-12">
+                <h6 class="mbr-section-subtitle mbr-fonts-style mb-4 display-3">
+                    Enviando a Postagem {{ post.titulo }}
+                </h6>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="idpost" value="{{ post.id }}">
+                    {% bootstrap_form form %}
+                    <input type="submit" class="btn btn-primary" value="Enviar">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

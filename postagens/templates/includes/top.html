@@ -1,6 +1,10 @@
+{% load static %}
 <div class="container">
     <div class="row">
-        <div class="col-9">&nbsp;</div>
+        <div class="col-9">
+            <img src="{% static 'assets/images/logo-IFRO.png' %}" alt="logotipo"
+                 height="80%">
+        </div>
         <div class="col-3">
                 <h2><a href="{% url 'home' %}">Meu Blog</a></h2>
                 <p>Este é o meu blog</p>
