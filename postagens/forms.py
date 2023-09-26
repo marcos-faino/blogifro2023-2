@@ -11,12 +11,12 @@ class EmailForm(forms.Form):
     def send_mail(self, post):
         conteudo = (f'Recomendo ler esta postagem. Você vai gostar!'
                     f'\nTitulo: {post.titulo}\n'
-                    f'{self.comentario}')
+                    f'{self.cleaned_data["comentario"]}')
         mail = EmailMessage(
             subject=f'Recomendação de Post',
-            from_email=self.email,
-            to=[self.destino],
+            from_email=self.cleaned_data["email"],
+            to=[self.cleaned_data["destino"],],
             body=conteudo,
-            headers={'Reply-to': self.email},
+            headers={'Reply-to': self.cleaned_data["email"]},
         )
         mail.send()

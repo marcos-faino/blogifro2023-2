@@ -49,12 +49,10 @@ class EnviarPostFormView(FormView):
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
         ctx['post'] = self._get_postagem(self.kwargs['pk'])
-        print(ctx['post'])
         return ctx
 
     def form_valid(self, form):
-        dados = form.cleaned_data
-        print(dados)
+        form.cleaned_data
         post = self.get_context_data()['post']
         form.send_mail(post)
         messages.success(self.request, f'Postagem {post.titulo} '
