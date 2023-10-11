@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, DetailView, FormView
 
 from postagens.forms import EmailForm
-from postagens.models import Postagem
+from postagens.models import Postagem, Comentario
 
 
 class HomeView(TemplateView):
@@ -32,6 +32,11 @@ class DetalhePostView(DetailView):
     template_name = 'postagens/detalhe.html'
     model = Postagem
     context_object_name = 'post'
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        ctx['coments'] = Comentario.objects.all().filter(postagem=self.object, ativo=True)
+        return ctx
 
 
 class EnviarPostFormView(FormView):

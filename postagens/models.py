@@ -33,3 +33,18 @@ class Postagem(models.Model):
         return self.titulo
 
 
+class Comentario(models.Model):
+    nome = models.CharField(max_length=50)
+    email = models.EmailField()
+    corpo = models.TextField()
+    criado = models.DateTimeField(auto_now_add=True)
+    atualizado = models.DateTimeField(auto_now=True)
+    ativo = models.BooleanField(default=False)
+    postagem = models.ForeignKey(Postagem, on_delete=models.CASCADE, related_name='post_coments')
+
+    class Meta:
+        verbose_name = "Comentário"
+        verbose_name_plural = "Comentários"
+
+    def __str__(self):
+        return f'Comentário de: {self.nome}'

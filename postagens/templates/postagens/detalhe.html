@@ -24,8 +24,16 @@
                 </p>
             </div>
             <div class="mbr-section-btn align-center">
-                    <a class="btn btn-primary display-4"
-                       href="{% url 'enviarpost' post.id %}">Enviar...</a>
+                <a class="btn btn-primary display-4"
+                   href="{% url 'enviarpost' post.id %}">Enviar...</a>
+            </div>
+            <div class="mbr-section-btn align-center">
+                <h2>Comentários</h2>
+                {% for c in coments %}
+                <p>Comentário de {{ c.nome }}<br>
+                    <b>{{ c.corpo }}</b>
+                </p>
+                {% endfor %}
             </div>
         </div>
     </div>
