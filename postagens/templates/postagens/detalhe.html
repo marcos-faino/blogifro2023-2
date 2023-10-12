@@ -25,7 +25,9 @@
             </div>
             <div class="mbr-section-btn align-center">
                 <a class="btn btn-primary display-4"
-                   href="{% url 'enviarpost' post.id %}">Enviar...</a>
+                   href="{% url 'enviarpost' post.id %}">Enviar...</a>&nbsp;&nbsp;
+                <a class="btn btn-success display-4"
+                   href="{% url 'comentpost' post.id %}">Comentar...</a>
             </div>
             <div class="mbr-text mbr-fonts-style display-7">
                 <h2>Comentários</h2>
