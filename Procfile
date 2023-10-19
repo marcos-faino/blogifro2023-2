@@ -1,0 +1,1 @@
+web: gunicorn blogifro2023.wsgi:postagens --log-file-
